@@ -27,6 +27,17 @@ def run_json_to_matAdj_and_txt(graph_number):
         return None
     return True
 
+def run_display_json_to_graph(graph_number):
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))  # Current directory
+        display_json_to_graph_path = os.path.join(script_dir, "All_functions_to_create_graph", "display_json_to_graph.py")
+        
+        subprocess.run(["python3", display_json_to_graph_path, str(graph_number)], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Error while running 'display_json_to_graph.py': {e}")
+        return None
+    return True
+
 if __name__ == "__main__":
     print("Creating the graph JSON file...")
     
@@ -37,3 +48,5 @@ if __name__ == "__main__":
 
         if run_json_to_matAdj_and_txt(graph_number):
             print(f"Graph {graph_number} has been successfully converted to text!")
+
+        run_display_json_to_graph(graph_number)
