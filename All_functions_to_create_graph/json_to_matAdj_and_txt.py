@@ -45,6 +45,9 @@ else:
     txt_file_path = os.path.join(txt_dir, f"graph{graph_number}.txt")
 
     with open(txt_file_path, "w") as f:
+
+        f.write(f"{n}\n") # Write the number of vertices before the matrix
+
         for row in adj_matrix:
             f.write(" ".join(map(str, row)) + "\n")
 

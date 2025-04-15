@@ -71,7 +71,7 @@ else:
         for n1, n2, data in G.edges(data=True):
             draw_edge(n1, n2, data["weight"])
 
-        canvas.create_text(400, 30, text="Hopefully the graph is correct!", fill="black", font=("Helvetica", 12))
+        canvas.create_text(400, 30, text="Final verification : Hopefully the graph is correct!", fill="black", font=("Helvetica", 12))
 
         root.mainloop()
 
