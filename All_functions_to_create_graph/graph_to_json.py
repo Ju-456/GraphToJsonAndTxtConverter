@@ -27,7 +27,23 @@ class GraphBuilder:
 
         export_btn = tk.Button(root, text="Export to JSON", command=self.export_json)
         export_btn.pack()
-
+        
+    def get_next_node_name(self):
+        index = self.node_count
+        name = ''
+        while True:
+            if index < 26:
+                name = chr(65 + index)  # A-Z
+            elif index < 52:
+                name = chr(97 + index - 26)  # a-z
+            else:
+                # Génère des noms comme aa, ab, ac, ..., ba, bb, etc.
+                base = index - 52
+                name = ''
+                while base >= 0:
+                    name = chr(97 + (base % 26)) + name
+                    base = base // 26 - 1
+            return name
     def add_or_select_node(self, event):
         clicked_node = self.get_node_at_position(event.x, event.y)
         if clicked_node:
@@ -46,7 +62,7 @@ class GraphBuilder:
             else:
                 self.selected_node = clicked_node
         else:
-            name = chr(65 + self.node_count)
+            name = self.get_next_node_name()
             self.nodes[name] = (event.x, event.y)
             self.node_count += 1
             self.node_history.append(name)  # Add new node to history
