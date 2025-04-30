@@ -30,20 +30,15 @@ class GraphBuilder:
         
     def get_next_node_name(self):
         index = self.node_count
-        name = ''
-        while True:
-            if index < 26:
-                name = chr(65 + index)  # A-Z
-            elif index < 52:
-                name = chr(97 + index - 26)  # a-z
-            else:
-                # Génère des noms comme aa, ab, ac, ..., ba, bb, etc.
-                base = index - 52
-                name = ''
-                while base >= 0:
-                    name = chr(97 + (base % 26)) + name
-                    base = base // 26 - 1
-            return name
+
+        if index < 26:
+            return chr(65 + index)  # A-Z
+        elif index < 52:
+            return chr(97 + index - 26)  # a-z
+        elif index < 78:
+            first_letter = 'a'
+            second_letter = chr(97 + (index - 52))  # 'a' à 'z'
+            return first_letter + second_letter
     def add_or_select_node(self, event):
         clicked_node = self.get_node_at_position(event.x, event.y)
         if clicked_node:
