@@ -3,10 +3,14 @@ import json
 import networkx as nx
 import tkinter as tk
 import math
+import sys
 
 user_home = os.path.expanduser("~")
 
-graph_number = input("Enter the graph number : ")
+if len(sys.argv) > 1:
+    graph_number = sys.argv[1]
+else:
+    graph_number = input("Enter the graph number: ")
 
 json_dir = os.path.join(user_home, "GraphToJsonAndTxtConverter", "All_functions_to_create_graph", "graphX_json")
 

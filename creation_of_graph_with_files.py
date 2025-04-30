@@ -2,20 +2,36 @@ import subprocess
 import os
 import json
 from pathlib import Path
+import re
 
 def run_graph_to_json():
     try:
-        # Specifique path to "graph_to_json.py" relative to main script's emplacement
-        script_dir = os.path.dirname(os.path.abspath(__file__))  # Current directory
+        script_dir = os.path.dirname(os.path.abspath(__file__))
         graph_to_json_path = os.path.join(script_dir, "All_functions_to_create_graph", "graph_to_json.py")
         
-        # Executing the script "graph_to_json.py"
-        subprocess.run(["python3", graph_to_json_path], check=True)
+        result = subprocess.run(
+            ["python3", graph_to_json_path],
+            check=True,
+            capture_output=True,
+            text=True
+        )
+
+        output = result.stdout + result.stderr  # fusion of stdout + stderr
+        print("Output from graph_to_json.py:")
+        print(output)
+
+        # Match: graph<number>.json
+        match = re.search(r"graph(\d+)\.json", result.stdout)
+        if match:
+            return match.group(1)
+        else:
+            print("Could not find graph number in the output.")
+            return None
+
     except subprocess.CalledProcessError as e:
         print(f"Error while running 'graph_to_json.py': {e}")
         return None
-    return True
-
+    
 def run_json_to_matAdj_and_txt(graph_number):
     try:
         script_dir = os.path.dirname(os.path.abspath(__file__))  # Current directory
@@ -40,13 +56,15 @@ def run_display_json_to_graph(graph_number):
 
 if __name__ == "__main__":
     print("Creating the graph JSON file...")
-    
-    if run_graph_to_json():
-        print("Graph created successfully!")
 
-        graph_number = input("Enter the number of the graph you want to generate the txt for (e.g., 2 for graph2.json): ")
+    graph_number = run_graph_to_json()  
+
+    if graph_number:
+        print(f"Graph n°{graph_number} created successfully!")
 
         if run_json_to_matAdj_and_txt(graph_number):
             print(f"Graph {graph_number} has been successfully converted to text!")
 
         run_display_json_to_graph(graph_number)
+    else:
+        print("Graph creation failed.")

@@ -1,10 +1,14 @@
 import json
 import numpy as np
 import os
+import sys
 
 user_home = os.path.expanduser("~")
 
-graph_number = input("Enter the graph number : ")
+if len(sys.argv) > 1:
+    graph_number = sys.argv[1]
+else:
+    graph_number = input("Enter the graph number: ")
 
 json_dir = os.path.join(user_home, "GraphToJsonAndTxtConverter", "All_functions_to_create_graph", "graphX_json")
 txt_dir = os.path.join(user_home, "GraphToJsonAndTxtConverter", "All_functions_to_create_graph","graphX_txt")
@@ -38,16 +42,10 @@ else:
 
     os.makedirs(txt_dir, exist_ok=True)
 
-    i = 1
-    while os.path.exists(os.path.join(txt_dir, f"graph{graph_number}.txt")):
-        i += 1
-
     txt_file_path = os.path.join(txt_dir, f"graph{graph_number}.txt")
 
     with open(txt_file_path, "w") as f:
-
-        f.write(f"{n}\n") # Write the number of vertices before the matrix
-
+        f.write(f"{n}\n")  # nombre de sommets
         for row in adj_matrix:
             f.write(" ".join(map(str, row)) + "\n")
 
