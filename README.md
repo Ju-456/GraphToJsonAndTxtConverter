@@ -57,13 +57,13 @@ Originally built to support the *NaturalDisasterManagementSystem*, this project 
 
 ```
 GraphToJsonAndTxtConverter/
-├── creation_of_graph_with_files.py        # Main script (calls everything)
+├── creation_of_graph_with_files.py                                         # Main script (calls everything)
 ├── All_functions_to_create_graph/
-│   ├── graph_to_json.py                   # Create graph ➔ JSON
-│   ├── json_to_matAdj_and_txt.py         # JSON ➔ TXT matrix
-│   ├── display_json_to_graph.py          # JSON ➔ Graph display
-│   ├── graphX_json/                       # Stores generated JSON files
-│   ├── graphX_txt/                        # Stores TXT adjacency matrices
+│   ├── graph_to_json.py                                                    # Create graph ➔ JSON
+│   ├── json_to_matAdj_and_txt.py                                           # JSON ➔ TXT matrix
+│   ├── display_json_to_graph.py                                            # JSON ➔ Graph display
+│   ├── graphX_json/normalize_json_graph_positions.py                       # Stores generated JSON files + normalize (optional tool)
+│   ├── graphX_txt/                                                         # Stores TXT adjacency matrices
 ```
 
 ---
