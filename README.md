@@ -85,7 +85,6 @@ Graph 3 has been successfully converted to text!
 ```
 
 ---
-🚧 More tweaks and improvements coming soon!
 
 Feel free to contact me for any question !
 
