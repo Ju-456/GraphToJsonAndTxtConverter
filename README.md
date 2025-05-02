@@ -39,14 +39,17 @@ All functionalities are located in the `All_functions_to_create_graph` folder.
 - ➔ `display_json_to_graph.py`  
   Display any directed graph defined in a `.json` file for easy verification.
 
+- ➔ `normalize_json_graph_positions.py` (new 🌟)  
+  Adjust node/vertex positions in a `.json` graph for cleaner, straighter visual displays.
+
 ---
 
 ## 💡 Why This Project?
 
-The purpose is to **simplify the manipulation of directed graphs** by offering:
-- Visual validation
-- Easy JSON and matrix conversion
-- Clean modular structure for custom extensions
+Originally built to support the *NaturalDisasterManagementSystem*, this project aims to **simplify the creation and manipulation of directed graphs**. It provides tools to:
+- Quickly simulate and visualize graphs  
+- Generate both JSON (for graphical use) and adjacency matrices (for algorithmic use)  
+- Keep graph workflows clean, modular, and extensible
 
 ---
 
